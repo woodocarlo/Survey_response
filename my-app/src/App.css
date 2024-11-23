@@ -1,0 +1,321 @@
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Use Google Fonts from the first CSS file */
+  background-color: #f4f4f4; /* From the first file */
+  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+.survey-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Container Styles */
+.container {
+  max-width: 2000px; /* Increased max-width for wider content */
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.App {
+  width: 100%; /* Make the container responsive */
+  max-width: 2400px; /* Set a larger max-width for wider content */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Survey Title */
+.survey-title {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  word-wrap: break-word; /* Ensures text breaks properly */
+  white-space: normal; /* Allow the text to wrap and break lines */
+  overflow-wrap: break-word; /* Ensure long words break into next line */
+}
+
+/* Survey Cards and List */
+.survey-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to the next line */
+  gap: 20px; /* Space between surveys */
+}
+
+.survey-card {
+  flex: 1 1 calc(25% - 20px); /* 4 cards per row */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-width:220px;
+}
+
+.survey-card h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* Survey Actions */
+.survey-actions {
+  margin-top: 10px;
+}
+
+.survey-actions button {
+  margin-right: 10px;
+}
+
+/* Button Styles */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Toolbar Styles */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Question Card Styles */
+.question-card {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word; /* Ensure text breaks within the question card */
+  white-space: normal; /* Allow wrapping within the question card */
+  overflow-wrap: break-word; /* Ensure long words break into next line */
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-wrap: break-word; /* Ensure text breaks properly in the header */
+  white-space: normal; /* Allow text to wrap in question header */
+  overflow-wrap: break-word; /* Ensure long words break into the next line */
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button {
+    margin-bottom: 10px;
+  }
+
+  .question-card {
+    margin: 10px 0;
+  }
+
+  .survey-card {
+    flex: 1 1 calc(50% - 20px); /* Adjust to 2 cards per row on smaller screens */
+  }
+}
+
+/* Survey Builder */
+.SurveyBuilder {
+  width: 100%;
+  max-width: 2000px; /* Adjusted max-width to align with the container */
+  margin: 0 auto; /* Keep it centered */
+  padding: 20px;
+}
+/* Question Options */
+.options {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Add Survey Button */
+.create-survey-btn {
+  display: block;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.create-survey-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.add-after {
+  background-color: #28a745;
+}
+
+.add-after:hover {
+  background-color: #218838;
+}
+
+/* Alignment and Layout for Form Inputs */
+input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.create-survey-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  text-decoration: underline;
+}
+
+/* Add After Button */
+.add-after {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-after:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
+}
+
+/* Responsive Survey Card Adjustments */
+@media (max-width: 600px) {
+  .survey-card {
+    flex: 1 1 100%; /* Make survey cards full width on small screens */
+  }
+
+  .survey-title {
+    font-size: 1.2em; /* Adjust font size for small screens */
+  }
+}
+@media (max-width: 600px) {
+  .question-card {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  input[type="text"], textarea {
+    font-size: 0.9em;
+  }
+
+  .survey-list {
+    gap: 10px; /* Reduce the gap on small screens */
+  }
+}
+
+/* ============================= */
+/* Attempt Survey Styles */
+/* ============================= */
+.attempt-survey {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.attempt-survey h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.question {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question h4 {
+  margin-bottom: 10px;
+}
+
+.question input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.attempt-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.attempt-buttons button {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .survey-card {
+    flex: 1 1 100%;
+  }
+
+  .attempt-survey {
+    padding: 10px;
+  }
+
+  .attempt-buttons button {
+    margin: 5px 0;
+  }
+}
