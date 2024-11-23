@@ -32,6 +32,17 @@ function SurveyBuilder({ saveSurvey, surveyTitle, setSurveyTitle, questions, set
       setQuestions(updatedQuestions);
     }
   };
+  const handleCopyScript = () => {
+    const surveyData = {
+      title: surveyTitle,
+      questions,
+      excelUrl,
+    };
+    navigator.clipboard.writeText(JSON.stringify(surveyData, null, 2))
+      .then(() => alert("Survey script copied to clipboard!"))
+      .catch((err) => alert("Failed to copy script: " + err));
+  };
+
 
   const updateQuestion = (id, field, value) => {
     const updatedQuestions = questions.map((q) =>
@@ -128,6 +139,8 @@ function SurveyBuilder({ saveSurvey, surveyTitle, setSurveyTitle, questions, set
               </button>
             </div>
           ))}
+          <button onClick={handleCopyScript}>Copy Script</button>
+
           <button
             onClick={() =>
               updateQuestion(question.id, "options", [
@@ -189,6 +202,7 @@ function SurveyBuilder({ saveSurvey, surveyTitle, setSurveyTitle, questions, set
 function SavedSurveys() {
   const navigate = useNavigate();
   const [savedSurveys, setSavedSurveys] = useState([]);
+  const [customScript, setCustomScript] = useState("");
 
   useEffect(() => {
     const surveys = JSON.parse(localStorage.getItem("surveys") || "[]");
@@ -205,12 +219,42 @@ function SavedSurveys() {
     navigate(`/attempt/${survey.title}`, { state: { survey } });
   };
 
+  const handleAddCustomSurvey = () => {
+    try {
+      const newSurvey = JSON.parse(customScript);
+      if (!newSurvey.title || !newSurvey.questions) {
+        alert("Invalid survey script! Ensure it includes a title and questions.");
+        return;
+      }
+      const updatedSurveys = [...savedSurveys, newSurvey];
+      localStorage.setItem("surveys", JSON.stringify(updatedSurveys));
+      setSavedSurveys(updatedSurveys);
+      alert("Custom survey added successfully!");
+      setCustomScript(""); // Clear the input
+    } catch (error) {
+      alert("Invalid JSON format. Please check the script and try again.");
+    }
+  };
+
   return (
     <div className="SavedSurveys">
       <h1>Saved Surveys</h1>
       <button className="create-survey-btn" onClick={() => navigate("/new")}>
         Create New Survey
       </button>
+      
+      {/* Add Custom Survey Section */}
+      <div className="custom-survey">
+        <h3>Add Custom Survey</h3>
+        <textarea
+          placeholder="Paste your survey script here..."
+          value={customScript}
+          onChange={(e) => setCustomScript(e.target.value)}
+          style={{ width: "100%", minHeight: "100px" }}
+        />
+        <button onClick={handleAddCustomSurvey}>Submit Script</button>
+      </div>
+
       <div className="survey-grid">
         {savedSurveys.map((survey, index) => (
           <div className="survey-card" key={index}>
